@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace AdvancedTaskPart2SpecFlowProject.DataModel
 {
-    internal class LoginDM
+    public class LoginDM
     {
+
+        public string email { get; set; } = string.Empty;
+        public string password { get; set; } = string.Empty;
+        public string firstName { get; set; } = string.Empty;
+
+
     }
 }

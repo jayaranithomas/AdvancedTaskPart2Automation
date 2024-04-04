@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace AdvancedTaskPart2SpecFlowProject.DataModel
 {
-    internal class ChangePasswordDM
+    public class ChangePasswordDM
     {
+        public string currentPassword { get; set; } = string.Empty;
+        public string newPassword { get; set; } = string.Empty;
+        public string confirmPassword { get; set; } = string.Empty;
+
+
+
     }
 }
