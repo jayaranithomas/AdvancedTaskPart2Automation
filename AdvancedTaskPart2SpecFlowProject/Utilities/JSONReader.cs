@@ -26,15 +26,15 @@ namespace AdvancedTaskPart2SpecFlowProject.Utilities
             List<ChangePasswordDM> changePasswordList = JsonConvert.DeserializeObject<List<ChangePasswordDM>>(json)!;
             return changePasswordList;
         }
-       /* public List<SkillsDM> ReadSJsonData()
+       public List<EducationDM> ReadEJsonData()
         {
             using StreamReader reader = new(jsonFilePath);
             var json = reader.ReadToEnd();
 
-            List<SkillsDM> skillsList = JsonConvert.DeserializeObject<List<SkillsDM>>(json)!;
-            return skillsList;
+            List<EducationDM> educationList = JsonConvert.DeserializeObject<List<EducationDM>>(json)!;
+            return educationList;
         }
-        public List<ShareSkillsDM> ReadShareJsonData()
+        /*public List<ShareSkillsDM> ReadShareJsonData()
         {
             using StreamReader reader = new(jsonFilePath);
             var json = reader.ReadToEnd();
@@ -50,12 +50,12 @@ namespace AdvancedTaskPart2SpecFlowProject.Utilities
             List<SearchSkillsDM> searchSkillsList = JsonConvert.DeserializeObject<List<SearchSkillsDM>>(json)!;
             return searchSkillsList;
         }*/
-        public LoginDM ReadLoginJsonData()
+        public List<LoginDM> ReadLoginJsonData()
         {
             using StreamReader reader = new(jsonFilePath);
             var json = reader.ReadToEnd();
 
-            LoginDM loginInfo = JsonConvert.DeserializeObject<LoginDM>(json)!;
+            List<LoginDM> loginInfo = JsonConvert.DeserializeObject<List<LoginDM>>(json)!;
             return loginInfo;
         }
         public void SetDataPath(string typeDM)

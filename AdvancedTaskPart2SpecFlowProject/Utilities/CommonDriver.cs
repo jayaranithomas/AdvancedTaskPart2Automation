@@ -20,15 +20,15 @@ namespace AdvancedTaskPart2SpecFlowProject.Utilities
 
         public static HomePage? homePageObj = new HomePage();
         public static LoginWindow? loginWindowObj = new LoginWindow();
-        public static JSONReader jsonObj = new JSONReader();
+        public static JSONReader? jsonReaderObj = new JSONReader();
 
-        public static void InitialSetUp()
+        public static void InitialSetUp(int index)
         {
 
             driver = new ChromeDriver();
             driver.Manage().Window.Maximize();
             homePageObj?.SignInAction();
-            loginWindowObj?.LoginActions();
+            loginWindowObj?.LoginActions(index);
             Thread.Sleep(1000);
             TestHooksClass.generateReport?.CreateTest();
 

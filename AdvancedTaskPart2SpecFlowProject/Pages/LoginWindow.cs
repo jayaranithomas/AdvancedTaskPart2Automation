@@ -11,13 +11,13 @@ namespace AdvancedTaskPart2SpecFlowProject.Pages
 {
     public class LoginWindow : CommonDriver
     {
-        LoginDM loginData;
+        List<LoginDM> loginData;
         IWebElement? emailIdTextBox;
         IWebElement? passWordTextBox;
         IWebElement? loginButton;
         public LoginWindow()
         {
-            loginData = new LoginDM();
+            loginData = new List<LoginDM>();
         }
 
         public void RenderComponents()
@@ -37,10 +37,10 @@ namespace AdvancedTaskPart2SpecFlowProject.Pages
 
         public void GetLoginData()
         {
-            jsonObj.SetDataPath("login");
-            loginData = jsonObj.ReadLoginJsonData();
+            jsonReaderObj?.SetDataPath("login");
+            loginData = jsonReaderObj!.ReadLoginJsonData();
         }
-        public void LoginActions()
+        public void LoginActions(int index)
         {
 
             RenderComponents();
@@ -48,11 +48,11 @@ namespace AdvancedTaskPart2SpecFlowProject.Pages
 
             emailIdTextBox?.Click();
             emailIdTextBox?.Clear();
-            emailIdTextBox?.SendKeys(loginData.email);
+            emailIdTextBox?.SendKeys(loginData[index].email);
 
             passWordTextBox?.Click();
             passWordTextBox?.Clear();
-            passWordTextBox?.SendKeys(loginData.password);
+            passWordTextBox?.SendKeys(loginData[index].password);
 
 
             loginButton?.Click();

@@ -25,19 +25,20 @@ namespace AdvancedTaskPart2SpecFlowProject.StepDefinitions
             changePasswordDMList  = new List<ChangePasswordDM>();
             changePasswordFeature = new ChangePasswordFeature();
             changePasswordAssertHelper = new ChangePasswordAssertHelper();
-            JSONDataReadMethod();
+            ReadJSONData();
         }
-        public void JSONDataReadMethod()
+        public void ReadJSONData()
         {
-            jsonObj.SetDataPath("password");
-            changePasswordDMList = jsonObj.ReadPJsonData();
+            jsonReaderObj?.SetDataPath("password");
+            changePasswordDMList = jsonReaderObj!.ReadPJsonData();
         }
 
-        [Given(@"User logs into the Mars Portal Home Page")]
-        public void GivenUserLogsIntoTheMarsPortalHomePage()
+        [Given(@"User logs into the Mars Portal Profile Page")]
+        public void GivenUserLogsIntoTheMarsPortalProfilePage()
         {
-            InitialSetUp();
+            InitialSetUp(0);
         }
+       
         [Given(@"User selects the Change Password Option")]
         public void GivenUserSelectsTheChangePasswordOption()
         {
