@@ -103,10 +103,10 @@ namespace AdvancedTaskPart2SpecFlowProject.StepDefinitions
 
 
 
-        [AfterScenario]
-        public void Teardown()
-        {
-            UpdateAndQuit();
-        }
+        //[AfterScenario]
+        //public void Teardown()
+        //{
+        //    UpdateAndQuit();
+        //}
     }
 }

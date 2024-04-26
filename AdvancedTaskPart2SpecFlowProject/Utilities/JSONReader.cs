@@ -34,14 +34,15 @@ namespace AdvancedTaskPart2SpecFlowProject.Utilities
             List<EducationDM> educationList = JsonConvert.DeserializeObject<List<EducationDM>>(json)!;
             return educationList;
         }
-        /*public List<ShareSkillsDM> ReadShareJsonData()
+        public List<ShareSkillDM> ReadShareSkillJsonData()
         {
             using StreamReader reader = new(jsonFilePath);
             var json = reader.ReadToEnd();
 
-            List<ShareSkillsDM> shareSkillsList = JsonConvert.DeserializeObject<List<ShareSkillsDM>>(json)!;
+            List<ShareSkillDM> shareSkillsList = JsonConvert.DeserializeObject<List<ShareSkillDM>>(json)!;
             return shareSkillsList;
         }
+        /*
         public List<SearchSkillsDM> ReadSearchSkillsJsonData()
         {
             using StreamReader reader = new(jsonFilePath);
@@ -69,7 +70,7 @@ namespace AdvancedTaskPart2SpecFlowProject.Utilities
             else if (typeDM.Equals("skills"))
                 jsonFilePath = projectPath + @"TestData\SkillsData.json";
             else if (typeDM.Equals("shareskills"))
-                jsonFilePath = projectPath + @"TestData\ShareSkillsData.json";
+                jsonFilePath = projectPath + @"TestData\ShareSkillData.json";
             else if (typeDM.Equals("login"))
                 jsonFilePath = projectPath + @"TestData\LoginData.json";
             else if (typeDM.Equals("password"))

@@ -1,4 +1,5 @@
 ﻿using AdvancedTaskPart2SpecFlowProject.ReportClass;
+using AdvancedTaskPart2SpecFlowProject.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ using TechTalk.SpecFlow;
 namespace AdvancedTaskPart2SpecFlowProject.TestSetUpClass
 {
     [Binding]
-    public class TestHooksClass
+    public class TestHooksClass : CommonDriver
     {
         public static GenerateReport? generateReport;
 
@@ -26,6 +27,13 @@ namespace AdvancedTaskPart2SpecFlowProject.TestSetUpClass
         {
             generateReport?.ExtentReportsCleanup();
         }
+
+        [AfterScenario]
+        public void Teardown()
+        {
+            UpdateAndQuit();
+        }
+
     }
-   
+
 }

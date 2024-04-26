@@ -239,12 +239,12 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("E. Add an already existing Education record")]
-        public void E_AddAnAlreadyExistingEducationRecord()
+        [NUnit.Framework.DescriptionAttribute("F. Add an already existing Education record")]
+        public void F_AddAnAlreadyExistingEducationRecord()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("E. Add an already existing Education record", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("F. Add an already existing Education record", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 34
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -272,13 +272,13 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("F. Adds an Education record with already existing data in Text Boxes and selectin" +
+        [NUnit.Framework.DescriptionAttribute("G. Adds an Education record with already existing data in Text Boxes and selectin" +
             "g different dropdowns")]
-        public void F_AddsAnEducationRecordWithAlreadyExistingDataInTextBoxesAndSelectingDifferentDropdowns()
+        public void G_AddsAnEducationRecordWithAlreadyExistingDataInTextBoxesAndSelectingDifferentDropdowns()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("F. Adds an Education record with already existing data in Text Boxes and selectin" +
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("G. Adds an Education record with already existing data in Text Boxes and selectin" +
                     "g different dropdowns", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 40
 this.ScenarioInitialize(scenarioInfo);
@@ -308,13 +308,13 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("G. Adds an Education record with new data in Text Boxes and selecting already exi" +
+        [NUnit.Framework.DescriptionAttribute("H. Adds an Education record with new data in Text Boxes and selecting already exi" +
             "sting dropdowns")]
-        public void G_AddsAnEducationRecordWithNewDataInTextBoxesAndSelectingAlreadyExistingDropdowns()
+        public void H_AddsAnEducationRecordWithNewDataInTextBoxesAndSelectingAlreadyExistingDropdowns()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("G. Adds an Education record with new data in Text Boxes and selecting already exi" +
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("H. Adds an Education record with new data in Text Boxes and selecting already exi" +
                     "sting dropdowns", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 46
 this.ScenarioInitialize(scenarioInfo);
@@ -344,13 +344,13 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("H. Adds an Education record with Special Characters and numbers in College TextBo" +
+        [NUnit.Framework.DescriptionAttribute("I. Adds an Education record with Special Characters and numbers in College TextBo" +
             "x")]
-        public void H_AddsAnEducationRecordWithSpecialCharactersAndNumbersInCollegeTextBox()
+        public void I_AddsAnEducationRecordWithSpecialCharactersAndNumbersInCollegeTextBox()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("H. Adds an Education record with Special Characters and numbers in College TextBo" +
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("I. Adds an Education record with Special Characters and numbers in College TextBo" +
                     "x", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 52
 this.ScenarioInitialize(scenarioInfo);
@@ -380,12 +380,12 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("I. Adds an Education record with more than 500 characters in Degree TextBox")]
-        public void I_AddsAnEducationRecordWithMoreThan500CharactersInDegreeTextBox()
+        [NUnit.Framework.DescriptionAttribute("J. Adds an Education record with more than 500 characters in Degree TextBox")]
+        public void J_AddsAnEducationRecordWithMoreThan500CharactersInDegreeTextBox()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("I. Adds an Education record with more than 500 characters in Degree TextBox", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("J. Adds an Education record with more than 500 characters in Degree TextBox", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 58
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -413,12 +413,12 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("J. Adds an Education record with only Spaces in TextBoxes")]
-        public void J_AddsAnEducationRecordWithOnlySpacesInTextBoxes()
+        [NUnit.Framework.DescriptionAttribute("K. Adds an Education record with only Spaces in TextBoxes")]
+        public void K_AddsAnEducationRecordWithOnlySpacesInTextBoxes()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("J. Adds an Education record with only Spaces in TextBoxes", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("K. Adds an Education record with only Spaces in TextBoxes", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 64
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -446,12 +446,12 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("K. Cancels an Education record without adding")]
-        public void K_CancelsAnEducationRecordWithoutAdding()
+        [NUnit.Framework.DescriptionAttribute("L. Cancels an Education record without adding")]
+        public void L_CancelsAnEducationRecordWithoutAdding()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("K. Cancels an Education record without adding", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("L. Cancels an Education record without adding", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 70
 this.ScenarioInitialize(scenarioInfo);
 #line hidden

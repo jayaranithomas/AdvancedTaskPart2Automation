@@ -8,5 +8,15 @@
     "email": "abcdpqrs@sample.com",
     "password": "123456",
     "firstName": "Abcd"
+  },
+  {
+    "email": "testuser100@sample.com",
+    "password": "123456",
+    "firstName": "Test100"
+  },
+  {
+    "email": "testuser4@sample.com",
+    "password": "123456",
+    "firstName": "Test4"
   }
 ]
