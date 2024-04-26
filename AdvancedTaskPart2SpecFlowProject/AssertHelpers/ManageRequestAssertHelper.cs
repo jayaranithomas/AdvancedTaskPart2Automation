@@ -12,8 +12,14 @@ namespace AdvancedTaskPart2SpecFlowProject.AssertHelpers
         public void AssertViewSentRequests(int pageCount, int requestCount)
         {
             Console.WriteLine("Page Count is: " + pageCount + " and Request Count is: " + requestCount + "");
-            Assert.That(pageCount>0, "No Requests to List");
+            Assert.That(pageCount > 0, "No Requests to List");
         }
+        public void AssertViewReceivedRequests(int pageCount, int requestCount)
+        {
+            Console.WriteLine("Page Count is: " + pageCount + " and Request Count is: " + requestCount + "");
+            Assert.That(pageCount > 0, "No Requests to List");
+        }
+
         public void AssertSentAndWithdrawRequests(string actualSentMessage, string expectedSentMessage, string actualWithdrawMessage, string expectedWithdrawMessage)
         {
             Assert.That(actualSentMessage.Equals(expectedSentMessage) && actualWithdrawMessage.Equals(expectedWithdrawMessage), "Request Not sent and Withdrawn");
@@ -22,5 +28,10 @@ namespace AdvancedTaskPart2SpecFlowProject.AssertHelpers
         {
             Assert.That(actual.Equals(expected), "Request Not Completed Successfully");
         }
+        public void AssertDeclineSkillTradeRequest(string actual, string expected)
+        {
+            Assert.That(actual.Equals(expected), "Request Not declined Successfully");
+        }
+
     }
 }

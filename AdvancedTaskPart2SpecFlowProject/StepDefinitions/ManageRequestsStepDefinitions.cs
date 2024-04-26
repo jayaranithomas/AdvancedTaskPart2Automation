@@ -38,10 +38,25 @@ namespace AdvancedTaskPart2SpecFlowProject.StepDefinitions
         [Then(@"user should be able to view all the requests sent by Abcd pagewise")]
         public void ThenUserShouldBeAbleToViewAllTheRequestsSentByAbcdPagewise()
         {
-            manageRequestsOperations.GetPageAndSentRequestCount();
+            manageRequestsOperations.GetSentRequestCount();
             int pageCount = manageRequestsOperations.GetPageCount();
             int requestCount = manageRequestsOperations.GetRequestsCount();
             manageRequestAssertHelper.AssertViewSentRequests(pageCount, requestCount);
+        }
+
+        [When(@"user  navigates to the received Request page")]
+        public void WhenUserNavigatesToTheReceivedRequestPage()
+        {
+            manageRequestsOperations.NavigateToReceivedRequestsPageOfFirstUser();
+        }
+
+        [Then(@"user should be able to view all the requests received by Abcd pagewise")]
+        public void ThenUserShouldBeAbleToViewAllTheRequestsReceivedByAbcdPagewise()
+        {
+            manageRequestsOperations.GetReceivedRequestCount();
+            int pageCount = manageRequestsOperations.GetPageCount();
+            int requestCount = manageRequestsOperations.GetRequestsCount();
+            manageRequestAssertHelper.AssertViewReceivedRequests(pageCount, requestCount);
         }
 
         [Given(@"user  navigates to the interested service details page")]
@@ -78,17 +93,17 @@ namespace AdvancedTaskPart2SpecFlowProject.StepDefinitions
             manageRequestsOperations.SentRequest();
         }
 
-        [When(@"received user accepts the request")]
-        public void WhenReceivedUserAcceptsTheRequest()
+        [When(@"received user accepts rates and completes the received request")]
+        public void WhenReceivedUserAcceptsRatesAndCompletesTheReceivedRequest()
         {
             manageRequestsOperations.LoginAsDifferentUser();
             manageRequestsOperations.NavigateToReceivedRequestsPage();
-            manageRequestsOperations.AcceptAndCompleteReceivedRequest();
+            manageRequestsOperations.AcceptRateAndCompleteReceivedRequest();
             manageRequestsOperations.CloseNewDriver();
         }
 
-        [When(@"sent user completes and reviews the skill trade")]
-        public void WhenSentUserCompletesAndReviewsTheSkillTrade()
+        [When(@"sent user completes and reviews the skill trade sent request")]
+        public void WhenSentUserCompletesAndReviewsTheSkillTradeSentRequest()
         {
             manageRequestsOperations.NavigateToSentRequestsPage();
             manageRequestsOperations.CompleteAndReviewSentRequest();
@@ -102,7 +117,23 @@ namespace AdvancedTaskPart2SpecFlowProject.StepDefinitions
             manageRequestAssertHelper.AssertCompleteSkillTradeRequest(actualStatus, expectedStatus);
         }
 
+        [When(@"received user declines the new skill trade request")]
+        public void WhenReceivedUserDeclinesTheNewSkillTradeRequest()
+        {
+            manageRequestsOperations.LoginAsDifferentUser();
+            manageRequestsOperations.NavigateToReceivedRequestsPage();
+            manageRequestsOperations.DeclineReceivedRequest();
+            manageRequestsOperations.CloseNewDriver();
+            manageRequestsOperations.NavigateToSentRequestsPage();
+        }
 
+        [Then(@"sent user should be able to see the skill trade request in declined status")]
+        public void ThenSentUserShouldBeAbleToSeeTheSkillTradeRequestInDeclinedStatus()
+        {
+            string actualStatus = manageRequestsRenderComponents.GetSentRequestStatus();
+            string expectedStatus = "Declined";
+            manageRequestAssertHelper.AssertDeclineSkillTradeRequest(actualStatus, expectedStatus);
+        }
 
     }
 }

@@ -27,13 +27,22 @@ namespace AdvancedTaskPart2SpecFlowProject.Pages.ManageRequestsComponent
             Thread.Sleep(1000);
             renderComponents.SentRequestOptionLocator()?.Click();
         }
-        public void GetPageAndSentRequestCount()
+        public void NavigateToReceivedRequestsPageOfFirstUser()
+        {
+            renderComponents.SentAndReceiveOptionsRenderComponents(driver);
+            renderComponents.ManageRequestTabLocator()?.Click();
+            Thread.Sleep(1000);
+            renderComponents.ReceivedRequestOptionLocator()?.Click();
+        }
+
+
+        public void GetSentRequestCount()
         {
             pageCount = renderComponents.GetSentRequestPageCount();
             int i = pageCount;
-            requestCount  = renderComponents.GetSentRequestsCount();
+            requestCount = renderComponents.GetSentRequestsCount();
             renderComponents.NextButtonRenderComponent();
-            while (i > 1) 
+            while (i > 1)
             {
                 renderComponents.NextButtonLocator()?.Click();
                 Thread.Sleep(1000);
@@ -41,6 +50,21 @@ namespace AdvancedTaskPart2SpecFlowProject.Pages.ManageRequestsComponent
                 i--;
             }
         }
+        public void GetReceivedRequestCount()
+        {
+            pageCount = renderComponents.GetReceivedRequestPageCount();
+            int i = pageCount;
+            requestCount = renderComponents.GetReceivedRequestsCount();
+            renderComponents.NextButtonRenderComponent();
+            while (i > 1)
+            {
+                renderComponents.NextButtonLocator()?.Click();
+                Thread.Sleep(1000);
+                requestCount += renderComponents.GetReceivedRequestsCount();
+                i--;
+            }
+        }
+
         public void NavigateToServiceDetailsPage()
         {
             renderComponents.SelectSearchSkill();
@@ -88,9 +112,15 @@ namespace AdvancedTaskPart2SpecFlowProject.Pages.ManageRequestsComponent
             Thread.Sleep(1000);
             renderComponents.ReceivedRequestOptionLocator()?.Click();
         }
-        public void AcceptAndCompleteReceivedRequest()
+        public void DeclineReceivedRequest()
+        {
+            renderComponents.DeclineReceivedRequestRenderComponents(newDriver!);
+        }
+
+        public void AcceptRateAndCompleteReceivedRequest()
         {
             renderComponents.AcceptReceivedRequestRenderComponents(newDriver!);
+            renderComponents.RateReceivedRequestRenderComponents(newDriver!);
             renderComponents.CompleteReceivedRequestRenderComponents(newDriver!);
         }
         public void CompleteAndReviewSentRequest()

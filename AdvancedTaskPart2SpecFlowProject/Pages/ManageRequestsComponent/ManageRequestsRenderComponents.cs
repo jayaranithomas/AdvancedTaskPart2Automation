@@ -30,6 +30,7 @@ namespace AdvancedTaskPart2SpecFlowProject.Pages.ManageRequestsComponent
         IWebElement? completeButton;
         IWebElement? reviewButton;
         IWebElement? reviewComment;
+        IWebElement? starRating;
         IWebElement? communicationRating;
         IWebElement? serviceRating;
         IWebElement? recommendRating;
@@ -40,7 +41,7 @@ namespace AdvancedTaskPart2SpecFlowProject.Pages.ManageRequestsComponent
         string statusMessage = string.Empty;
 
         int pageCount;
-        int sentRequestsCount;
+        int requestsCount;
         public void SentAndReceiveOptionsRenderComponents(IWebDriver newDriver)
         {
             try
@@ -197,6 +198,23 @@ namespace AdvancedTaskPart2SpecFlowProject.Pages.ManageRequestsComponent
             }
 
         }
+        public void RateReceivedRequestRenderComponents(IWebDriver newDriver)
+        {
+            try
+            {
+                var wait = new WebDriverWait(newDriver, new TimeSpan(0, 0, 10));
+                wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//div[@id='received-request-section']//tr[2]/td[3]//i[4]")));
+
+                starRating = newDriver.FindElement(By.XPath("//div[@id='received-request-section']//tr[2]/td[3]//i[4]"));
+                starRating.Click();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+        }
         public void CompleteReceivedRequestRenderComponents(IWebDriver newDriver)
         {
             try
@@ -260,6 +278,7 @@ namespace AdvancedTaskPart2SpecFlowProject.Pages.ManageRequestsComponent
         {
             try
             {
+                Wait.WaitToBeVisible("XPath", "//div[@id='sent-request-section']//tr[1]//td[5]", 10);
                 status = driver.FindElement(By.XPath("//div[@id='sent-request-section']//tr[1]//td[5]"));
             }
             catch (Exception ex)
@@ -278,7 +297,7 @@ namespace AdvancedTaskPart2SpecFlowProject.Pages.ManageRequestsComponent
 
         public void SelectRequiredService()
         {
-            try 
+            try
             {
                 Wait.WaitToBeVisible("XPath", "//p[@class='row-padded']", 10);
                 requiredService = driver.FindElement(By.XPath("//p[@class='row-padded']"));
@@ -364,25 +383,52 @@ namespace AdvancedTaskPart2SpecFlowProject.Pages.ManageRequestsComponent
             }
             return pageCount;
         }
-        public int GetSentRequestsCount()
+        public int GetReceivedRequestPageCount()
         {
             try
             {
-                Wait.WaitToBeVisible("XPath", "//div[@id='sent-request-section']//table", 5);
-                sentRequestsCount = driver.FindElements(By.XPath("//div[@id='sent-request-section']//tr")).Count-1;
+                Wait.WaitToBeVisible("XPath", "//div[@id='received-request-section']//table", 5);
+                pageCount = driver.FindElements(By.XPath("//button[@class='ui button otherPage']")).Count;
 
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
             }
-            return sentRequestsCount;
+            return pageCount;
+        }
+
+        public int GetSentRequestsCount()
+        {
+            try
+            {
+                Wait.WaitToBeVisible("XPath", "//div[@id='sent-request-section']//table", 5);
+                requestsCount = driver.FindElements(By.XPath("//div[@id='sent-request-section']//tr")).Count - 1;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            return requestsCount;
+        }
+        public int GetReceivedRequestsCount()
+        {
+            try
+            {
+                Wait.WaitToBeVisible("XPath", "//div[@id='received-request-section']//table", 5);
+                requestsCount = driver.FindElements(By.XPath("//div[@id='received-request-section']//tr")).Count - 1;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            return requestsCount;
         }
         public void NextButtonRenderComponent()
         {
             try
             {
-                Wait.WaitToBeVisible("XPath", "//div[@id='sent-request-section']//table", 5);
+                Wait.WaitToBeVisible("XPath", "//button[@class='ui button otherPage'][last()]", 5);
                 nextButton = driver.FindElement(By.XPath("//button[@class='ui button otherPage'][last()]"));
 
             }
