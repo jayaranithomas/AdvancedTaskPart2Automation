@@ -107,9 +107,9 @@ namespace AdvancedTaskPart2SpecFlowProject.Pages.ProfileNavigationMenuComponents
                 educationTab = driver.FindElement(By.XPath("//a[@data-tab='third']"));
                 educationTab.Click();
             }
-            catch(Exception ex)
-            { 
-                Console.WriteLine(ex); 
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
             }
         }
         public int GetEducationRecordsCount()

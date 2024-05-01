@@ -29,8 +29,8 @@ namespace AdvancedTaskPart2SpecFlowProject.AssertHelpers
         }
         public void assertCancelAddNewEducationRecord(String lastCollegeName)
         {
-            if(!lastCollegeName.Equals("Monach"))
-                { Console.WriteLine("Education record cancelled before adding"); }
+            if (!lastCollegeName.Equals("Monach"))
+            { Console.WriteLine("Education record cancelled before adding"); }
             Assert.That(!lastCollegeName.Equals("Monach"), "The education record not cancelled successfully");
 
         }

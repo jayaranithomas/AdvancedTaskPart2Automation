@@ -17,7 +17,7 @@ namespace AdvancedTaskPart2SpecFlowProject.Utilities
         {
             jsonFilePath = string.Empty;
         }
-        
+
         public List<ChangePasswordDM> ReadPJsonData()
         {
             using StreamReader reader = new(jsonFilePath);
@@ -26,7 +26,7 @@ namespace AdvancedTaskPart2SpecFlowProject.Utilities
             List<ChangePasswordDM> changePasswordList = JsonConvert.DeserializeObject<List<ChangePasswordDM>>(json)!;
             return changePasswordList;
         }
-       public List<EducationDM> ReadEJsonData()
+        public List<EducationDM> ReadEJsonData()
         {
             using StreamReader reader = new(jsonFilePath);
             var json = reader.ReadToEnd();
@@ -42,15 +42,15 @@ namespace AdvancedTaskPart2SpecFlowProject.Utilities
             List<ShareSkillDM> shareSkillsList = JsonConvert.DeserializeObject<List<ShareSkillDM>>(json)!;
             return shareSkillsList;
         }
-        /*
-        public List<SearchSkillsDM> ReadSearchSkillsJsonData()
+
+        public List<CertificationDM> ReadCertificationJsonData()
         {
             using StreamReader reader = new(jsonFilePath);
             var json = reader.ReadToEnd();
 
-            List<SearchSkillsDM> searchSkillsList = JsonConvert.DeserializeObject<List<SearchSkillsDM>>(json)!;
-            return searchSkillsList;
-        }*/
+            List<CertificationDM> certificationList = JsonConvert.DeserializeObject<List<CertificationDM>>(json)!;
+            return certificationList;
+        }
         public List<LoginDM> ReadLoginJsonData()
         {
             using StreamReader reader = new(jsonFilePath);
@@ -75,6 +75,8 @@ namespace AdvancedTaskPart2SpecFlowProject.Utilities
                 jsonFilePath = projectPath + @"TestData\LoginData.json";
             else if (typeDM.Equals("password"))
                 jsonFilePath = projectPath + @"TestData\ChangePasswordData.json";
+            else if (typeDM.Equals("certification"))
+                jsonFilePath = projectPath + @"TestData\CertificationData.json";
         }
     }
 }

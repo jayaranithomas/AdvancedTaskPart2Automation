@@ -13,7 +13,7 @@ namespace AdvancedTaskPart2SpecFlowProject.Pages.AccountMenuComponent
         ChangePasswordRenderComponent? changePasswordRenderComponent;
         public ChangePasswordFeature()
         {
-            changePasswordRenderComponent = new ChangePasswordRenderComponent();    
+            changePasswordRenderComponent = new ChangePasswordRenderComponent();
         }
         public void ChangePassword(ChangePasswordDM passwordDM)
         {

@@ -17,7 +17,7 @@ namespace AdvancedTaskPart2SpecFlowProject.StepDefinitions
         List<EducationDM> educationDMList;
         string actualMessage = string.Empty;
         string expectedMessage = string.Empty;
-        public EducationStepDefinitions() 
+        public EducationStepDefinitions()
         {
             educationRenderComponents = new EducationRenderComponents();
             educationAddAndDeleteComponent = new EducationAddAndDeleteComponent();
@@ -40,7 +40,7 @@ namespace AdvancedTaskPart2SpecFlowProject.StepDefinitions
         [Given(@"user selects the Education tab")]
         public void GivenUserSelectsTheEducationTab()
         {
-            educationRenderComponents.EducationTabRenderComponent();      
+            educationRenderComponents.EducationTabRenderComponent();
         }
 
         [When(@"user deletes all the education records one by one")]
@@ -69,7 +69,7 @@ namespace AdvancedTaskPart2SpecFlowProject.StepDefinitions
         [Then(@"Mars portal should alert the user and save the new education record")]
         public void ThenMarsPortalShouldAlertTheUserAndSaveTheNewEducationRecord()
         {
-            educationAssertHelper.assertAddNewEducation(actualMessage, expectedMessage);     
+            educationAssertHelper.assertAddNewEducation(actualMessage, expectedMessage);
         }
 
         [When(@"user does not enter data in any of the available fields")]
@@ -171,8 +171,8 @@ namespace AdvancedTaskPart2SpecFlowProject.StepDefinitions
         [Then(@"Mars portal should not save the cancelled education record")]
         public void ThenMarsPortalShouldNotSaveTheCancelledEducationRecord()
         {
-           string lastCollegeName = educationRenderComponents.GetLastRecordCollegeName();
-           educationAssertHelper.assertCancelAddNewEducationRecord(lastCollegeName);
+            string lastCollegeName = educationRenderComponents.GetLastRecordCollegeName();
+            educationAssertHelper.assertCancelAddNewEducationRecord(lastCollegeName);
         }
 
     }

@@ -32,7 +32,7 @@ namespace AdvancedTaskPart2SpecFlowProject.Pages.AccountMenuComponent
                 Console.WriteLine(ex);
             }
         }
-        public void ChangePasswordOptionRenderComponent() 
+        public void ChangePasswordOptionRenderComponent()
         {
             try
             {

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace AdvancedTaskPart2SpecFlowProject.Pages.ManageListingComponent
 {
-    public class AddUpdateViewAndDeleteShareSkillListing:CommonDriver
+    public class AddUpdateViewAndDeleteShareSkillListing : CommonDriver
     {
         public ManageListingRenderComponents manageListingRenderComponents;
         string titleText = string.Empty;
@@ -42,7 +42,7 @@ namespace AdvancedTaskPart2SpecFlowProject.Pages.ManageListingComponent
                 manageListingRenderComponents.TagLocator(0).SendKeys(shareSkillsDM.tag);
                 manageListingRenderComponents.TagLocator(0).SendKeys(Keys.Enter);
             }
-            
+
             if (shareSkillsDM.skilltrade.Equals("true"))
             {
                 manageListingRenderComponents.SkillTradeTLocator()?.Click();
@@ -55,17 +55,17 @@ namespace AdvancedTaskPart2SpecFlowProject.Pages.ManageListingComponent
                 manageListingRenderComponents.RenderCreditComponent();
                 manageListingRenderComponents.CreditLocator()?.SendKeys(shareSkillsDM.credit);
             }
-            
-           
+
+
 
             if (!string.IsNullOrEmpty(manageListingRenderComponents.TitleLocator()?.GetAttribute("value")))
                 titleText = manageListingRenderComponents.TitleLocator().GetAttribute("value");
 
             if (!string.IsNullOrEmpty(manageListingRenderComponents.DescriptionLocator()?.Text))
                 descriptionText = manageListingRenderComponents.DescriptionLocator().Text;
-                     
-             manageListingRenderComponents.SaveButtonLocator()?.Click();
-            
+
+            manageListingRenderComponents.SaveButtonLocator()?.Click();
+
         }
         public void UpdateShareSkills(ShareSkillDM shareSkillsDM)
         {
@@ -84,12 +84,12 @@ namespace AdvancedTaskPart2SpecFlowProject.Pages.ManageListingComponent
                 actions.Perform();
             }
 
-           if (!string.IsNullOrEmpty(shareSkillsDM.description))
-           {
+            if (!string.IsNullOrEmpty(shareSkillsDM.description))
+            {
                 manageListingRenderComponents.DescriptionLocator()?.Clear();
                 manageListingRenderComponents.DescriptionLocator()?.SendKeys(shareSkillsDM.description);
-           }
-           else
+            }
+            else
             {
                 var actions = new OpenQA.Selenium.Interactions.Actions(driver);
                 actions.Click(manageListingRenderComponents.DescriptionLocator());
@@ -147,21 +147,21 @@ namespace AdvancedTaskPart2SpecFlowProject.Pages.ManageListingComponent
 
 
             if (!string.IsNullOrEmpty(manageListingRenderComponents.TitleLocator()?.GetAttribute("value")))
-               titleText = manageListingRenderComponents.TitleLocator().GetAttribute("value");
+                titleText = manageListingRenderComponents.TitleLocator().GetAttribute("value");
 
-           if (!string.IsNullOrEmpty(manageListingRenderComponents.DescriptionLocator()?.Text))
-               descriptionText = manageListingRenderComponents.DescriptionLocator().Text;
+            if (!string.IsNullOrEmpty(manageListingRenderComponents.DescriptionLocator()?.Text))
+                descriptionText = manageListingRenderComponents.DescriptionLocator().Text;
 
-                manageListingRenderComponents.SaveButtonLocator()?.Click();
-           
+            manageListingRenderComponents.SaveButtonLocator()?.Click();
+
         }
 
         public string GetTitle()
-        { 
-            return titleText; 
+        {
+            return titleText;
         }
-        public string GetDescription() 
-        { 
+        public string GetDescription()
+        {
             return descriptionText;
         }
         public void UpdateShareSkillWithoutEditing()

@@ -10,7 +10,7 @@ namespace AdvancedTaskPart2SpecFlowProject.AssertHelpers
     public class ChangePasswordAssertHelper
     {
         public void AssertPasswordChange(string actual, string expected)
-        { 
+        {
             Assert.That(actual.Equals(expected), "Password Not Changed Successfully");
 
         }

@@ -22,7 +22,7 @@ namespace AdvancedTaskPart2SpecFlowProject.StepDefinitions
         public ChangePasswordStepDefinitions()
         {
             changePasswordRenderComponent = new ChangePasswordRenderComponent();
-            changePasswordDMList  = new List<ChangePasswordDM>();
+            changePasswordDMList = new List<ChangePasswordDM>();
             changePasswordFeature = new ChangePasswordFeature();
             changePasswordAssertHelper = new ChangePasswordAssertHelper();
             ReadJSONData();
@@ -38,13 +38,13 @@ namespace AdvancedTaskPart2SpecFlowProject.StepDefinitions
         {
             InitialSetUp(0);
         }
-       
+
         [Given(@"User selects the Change Password Option")]
         public void GivenUserSelectsTheChangePasswordOption()
         {
             changePasswordRenderComponent?.UserNameMenuRenderComponent();
             changePasswordRenderComponent?.ChangePasswordOptionRenderComponent();
-        }        
+        }
 
         [When(@"User enters valid credentials in all the three fields")]
         public void WhenUserEntersValidCredentialsInAllTheThreeFields()
@@ -102,11 +102,5 @@ namespace AdvancedTaskPart2SpecFlowProject.StepDefinitions
         }
 
 
-
-        //[AfterScenario]
-        //public void Teardown()
-        //{
-        //    UpdateAndQuit();
-        //}
     }
 }
