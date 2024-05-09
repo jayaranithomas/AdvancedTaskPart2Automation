@@ -25,11 +25,10 @@ namespace AdvancedTaskPart2SpecFlowProject.StepDefinitions
             changePasswordDMList = new List<ChangePasswordDM>();
             changePasswordFeature = new ChangePasswordFeature();
             changePasswordAssertHelper = new ChangePasswordAssertHelper();
-            ReadJSONData();
         }
-        public void ReadJSONData()
+        public void ReadJSONData(string path)
         {
-            jsonReaderObj?.SetDataPath("password");
+            jsonReaderObj?.SetDataPath(path);
             changePasswordDMList = jsonReaderObj!.ReadPJsonData();
         }
 
@@ -46,6 +45,26 @@ namespace AdvancedTaskPart2SpecFlowProject.StepDefinitions
             changePasswordRenderComponent?.ChangePasswordOptionRenderComponent();
         }
 
+        [Given(@"User reads test data from '([^']*)'")]
+        public void GivenUserReadsDataTestDataFrom(string path)
+        {
+            ReadJSONData(path);        
+        }
+
+        [Then(@"Mars portal should alert the user and save the new password for the account")]
+        public void ThenMarsPortalShouldAlertTheUserAndSaveTheNewPasswordForTheAccount()
+        {
+            changePasswordAssertHelper?.AssertPasswordChange(actualMessage, expectedMessage);
+        }
+
+
+        [Then(@"Mars portal should alert the user and should not change the account password")]
+        public void ThenMarsPortalShouldAlertTheUserAndShouldNotChangeTheAccountPassword()
+        {
+            changePasswordAssertHelper?.AssertPasswordNotChanged(actualMessage, expectedMessage);
+        }
+
+
         [When(@"User enters valid credentials in all the three fields")]
         public void WhenUserEntersValidCredentialsInAllTheThreeFields()
         {
@@ -56,25 +75,12 @@ namespace AdvancedTaskPart2SpecFlowProject.StepDefinitions
             changePasswordFeature?.ChangePasswordBack(changePasswordDMList[1]);
         }
 
-        [Then(@"Mars portal should alert the user and save the new password for the account")]
-        public void ThenMarsPortalShouldAlertTheUserAndSaveTheNewPasswordForTheAccount()
-        {
-            changePasswordAssertHelper?.AssertPasswordChange(actualMessage, expectedMessage);
-        }
-
         [When(@"User does not enter data in any of the three fields")]
         public void WhenUserDoesNotEnterDataInAnyOfTheThreeFields()
         {
             changePasswordFeature?.ChangePassword(changePasswordDMList[2]);
             actualMessage = changePasswordRenderComponent!.CapturePopupMessage();
             expectedMessage = "Please fill all the details before Submit";
-
-        }
-
-        [Then(@"Mars portal should alert the user and should not change the account password")]
-        public void ThenMarsPortalShouldAlertTheUserAndShouldNotChangeTheAccountPassword()
-        {
-            changePasswordAssertHelper?.AssertPasswordNotChanged(actualMessage, expectedMessage);
         }
 
         [When(@"User enters incorrect data in current password field")]

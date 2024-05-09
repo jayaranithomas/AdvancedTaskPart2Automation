@@ -26,13 +26,19 @@ namespace AdvancedTaskPart2SpecFlowProject.StepDefinitions
             manageListingAssertHelper = new ManageListingAssertHelper();
             addUpdateViewAndDeleteShareSkillListing = new AddUpdateViewAndDeleteShareSkillListing();
             shareSkillDMList = new List<ShareSkillDM>();
-            ReadJSONData();
         }
-        public void ReadJSONData()
+        public void ReadJSONData(string testDataPath)
         {
-            jsonReaderObj?.SetDataPath("shareskills");
+            jsonReaderObj?.SetDataPath(testDataPath);
             shareSkillDMList = jsonReaderObj!.ReadShareSkillJsonData();
         }
+
+        [Given(@"user reads share skill listing test data from '([^']*)'")]
+        public void GivenUserReadsShareSkillListingTestDataFrom(string testDataPath)
+        {
+            ReadJSONData(testDataPath);
+        }
+
 
         [Given(@"user logs into the Mars Portal")]
         public void GivenUserLogsIntoTheMarsPortal()

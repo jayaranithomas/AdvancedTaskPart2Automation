@@ -59,24 +59,14 @@ namespace AdvancedTaskPart2SpecFlowProject.Utilities
             List<LoginDM> loginInfo = JsonConvert.DeserializeObject<List<LoginDM>>(json)!;
             return loginInfo;
         }
-        public void SetDataPath(string typeDM)
+        public void SetDataPath(string testDataPath)
         {
             string path = Assembly.GetCallingAssembly().Location;
             string actualPath = path.Substring(0, path.LastIndexOf("bin"));
             string projectPath = new Uri(actualPath).LocalPath;
 
-            if (typeDM.Equals("education"))
-                jsonFilePath = projectPath + @"TestData\EducationData.json";
-            else if (typeDM.Equals("skills"))
-                jsonFilePath = projectPath + @"TestData\SkillsData.json";
-            else if (typeDM.Equals("shareskills"))
-                jsonFilePath = projectPath + @"TestData\ShareSkillData.json";
-            else if (typeDM.Equals("login"))
-                jsonFilePath = projectPath + @"TestData\LoginData.json";
-            else if (typeDM.Equals("password"))
-                jsonFilePath = projectPath + @"TestData\ChangePasswordData.json";
-            else if (typeDM.Equals("certification"))
-                jsonFilePath = projectPath + @"TestData\CertificationData.json";
+            jsonFilePath = projectPath + testDataPath;
+
         }
     }
 }

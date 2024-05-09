@@ -1,5 +1,8 @@
 ﻿Feature: This test suite contains scenarios to test the various features under Manage Listings tab on the Mars Portal
 
+Background: 
+Given user reads share skill listing test data from 'TestData\ShareSkillData.json'
+
 Scenario: A. Add new share skill listing by entering valid data in all the mandatory fields
 	Given user logs into the Mars Portal
 	And user navigates to the service listing page
@@ -115,6 +118,7 @@ Scenario: S. Update an existing share skill listing by changing the skill trade 
 	And user  clicks on the pen icon to the right end of the first share skill listing
 	When user updates the selected share skill listing by changing the skill trade Option
 	Then Mars Portal should save the skill trade updated share skill listing and navigate back to the listing management page
+
 
 Scenario: T. View an existing share skill listing
 	Given user logs into the Mars Portal

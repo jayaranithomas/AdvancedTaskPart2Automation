@@ -23,11 +23,10 @@ namespace AdvancedTaskPart2SpecFlowProject.StepDefinitions
             educationAddAndDeleteComponent = new EducationAddAndDeleteComponent();
             educationAssertHelper = new EducationAssertHelper();
             educationDMList = new List<EducationDM>();
-            ReadJSONData();
         }
-        public void ReadJSONData()
+        public void ReadJSONData(string testDataPath)
         {
-            jsonReaderObj?.SetDataPath("education");
+            jsonReaderObj?.SetDataPath(testDataPath);
             educationDMList = jsonReaderObj!.ReadEJsonData();
         }
 
@@ -41,6 +40,12 @@ namespace AdvancedTaskPart2SpecFlowProject.StepDefinitions
         public void GivenUserSelectsTheEducationTab()
         {
             educationRenderComponents.EducationTabRenderComponent();
+        }
+
+        [Given(@"User reads education test data from '([^']*)'")]
+        public void GivenUserReadsEducationTestDataFrom(string testDataPath)
+        {
+            ReadJSONData(testDataPath);
         }
 
         [When(@"user deletes all the education records one by one")]
@@ -64,6 +69,8 @@ namespace AdvancedTaskPart2SpecFlowProject.StepDefinitions
             educationAddAndDeleteComponent.AddEducation(educationDMList[1]);
             actualMessage = educationRenderComponents!.CapturePopupMessage();
             expectedMessage = "Education has been added";
+            educationAddAndDeleteComponent.DeleteAllEducationRecords();
+
         }
 
         [Then(@"Mars portal should alert the user and save the new education record")]
@@ -75,9 +82,12 @@ namespace AdvancedTaskPart2SpecFlowProject.StepDefinitions
         [When(@"user does not enter data in any of the available fields")]
         public void WhenUserDoesNotEnterDataInAnyOfTheAvailableFields()
         {
+            educationAddAndDeleteComponent.DeleteAllEducationRecords();
             educationAddAndDeleteComponent.AddEducation(educationDMList[2]);
             actualMessage = educationRenderComponents!.CapturePopupMessage();
             expectedMessage = "Please enter all the fields";
+            educationAddAndDeleteComponent.DeleteAllEducationRecords();
+
         }
 
         [Then(@"Mars portal should alert the user and should not save the new education record")]
@@ -89,17 +99,23 @@ namespace AdvancedTaskPart2SpecFlowProject.StepDefinitions
         [When(@"user does not select any options from the dropdowns")]
         public void WhenUserDoesNotSelectAnyOptionsFromTheDropdowns()
         {
+            educationAddAndDeleteComponent.DeleteAllEducationRecords();
             educationAddAndDeleteComponent.AddEducation(educationDMList[3]);
             actualMessage = educationRenderComponents!.CapturePopupMessage();
             expectedMessage = "Please enter all the fields";
+            educationAddAndDeleteComponent.DeleteAllEducationRecords();
+
         }
 
         [When(@"user does not enter any data in both the Text Boxes")]
         public void WhenUserDoesNotEnterAnyDataInBothTheTextBoxes()
         {
+            educationAddAndDeleteComponent.DeleteAllEducationRecords();
             educationAddAndDeleteComponent.AddEducation(educationDMList[4]);
             actualMessage = educationRenderComponents!.CapturePopupMessage();
             expectedMessage = "Please enter all the fields";
+            educationAddAndDeleteComponent.DeleteAllEducationRecords();
+
         }
 
         [When(@"user adds an already existing education record")]
@@ -110,6 +126,8 @@ namespace AdvancedTaskPart2SpecFlowProject.StepDefinitions
             educationAddAndDeleteComponent.AddEducation(educationDMList[0]);
             actualMessage = educationRenderComponents!.CapturePopupMessage();
             expectedMessage = "This information is already exist.";
+            educationAddAndDeleteComponent.DeleteAllEducationRecords();
+
         }
 
         [When(@"user adds an education record with already existing data in Text Boxes and selecting different dropdown options")]
@@ -120,6 +138,8 @@ namespace AdvancedTaskPart2SpecFlowProject.StepDefinitions
             educationAddAndDeleteComponent.AddEducation(educationDMList[5]);
             actualMessage = educationRenderComponents!.CapturePopupMessage();
             expectedMessage = "Education has been added";
+            educationAddAndDeleteComponent.DeleteAllEducationRecords();
+
         }
 
         [When(@"user adds an education record with new data in Text Boxes and selecting already existing dropdowns")]
@@ -130,6 +150,8 @@ namespace AdvancedTaskPart2SpecFlowProject.StepDefinitions
             educationAddAndDeleteComponent.AddEducation(educationDMList[6]);
             actualMessage = educationRenderComponents!.CapturePopupMessage();
             expectedMessage = "Education has been added";
+            educationAddAndDeleteComponent.DeleteAllEducationRecords();
+
         }
 
         [When(@"user adds an education record with Special Characters and numbers in College TextBox")]
@@ -139,6 +161,8 @@ namespace AdvancedTaskPart2SpecFlowProject.StepDefinitions
             educationAddAndDeleteComponent.AddEducation(educationDMList[7]);
             actualMessage = educationRenderComponents!.CapturePopupMessage();
             expectedMessage = "Education has been added";
+            educationAddAndDeleteComponent.DeleteAllEducationRecords();
+
         }
 
         [When(@"user adds an education record with very long data in Degree TextBox")]
@@ -148,6 +172,8 @@ namespace AdvancedTaskPart2SpecFlowProject.StepDefinitions
             educationAddAndDeleteComponent.AddEducation(educationDMList[8]);
             actualMessage = educationRenderComponents!.CapturePopupMessage();
             expectedMessage = "Education has been added";
+            educationAddAndDeleteComponent.DeleteAllEducationRecords();
+
         }
 
         [When(@"user adds an education record with only Spaces in TextBoxes")]
@@ -157,6 +183,8 @@ namespace AdvancedTaskPart2SpecFlowProject.StepDefinitions
             educationAddAndDeleteComponent.AddEducation(educationDMList[9]);
             actualMessage = educationRenderComponents!.CapturePopupMessage();
             expectedMessage = "Education information was invalid";
+            educationAddAndDeleteComponent.DeleteAllEducationRecords();
+
         }
 
         [When(@"user cancels an Education record without adding")]
@@ -173,6 +201,8 @@ namespace AdvancedTaskPart2SpecFlowProject.StepDefinitions
         {
             string lastCollegeName = educationRenderComponents.GetLastRecordCollegeName();
             educationAssertHelper.assertCancelAddNewEducationRecord(lastCollegeName);
+            educationAddAndDeleteComponent.DeleteAllEducationRecords();
+
         }
 
     }

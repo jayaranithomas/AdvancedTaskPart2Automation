@@ -37,7 +37,7 @@ namespace AdvancedTaskPart2SpecFlowProject.Pages
 
         public void GetLoginData()
         {
-            jsonReaderObj?.SetDataPath("login");
+            jsonReaderObj?.SetDataPath(@"TestData\LoginData.json");
             loginData = jsonReaderObj!.ReadLoginJsonData();
         }
         public void LoginActions(int index)
@@ -53,7 +53,6 @@ namespace AdvancedTaskPart2SpecFlowProject.Pages
             passWordTextBox?.Click();
             passWordTextBox?.Clear();
             passWordTextBox?.SendKeys(loginData[index].password);
-
 
             loginButton?.Click();
 

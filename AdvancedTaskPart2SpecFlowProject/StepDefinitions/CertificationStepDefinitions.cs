@@ -22,11 +22,10 @@ namespace AdvancedTaskPart2SpecFlowProject.StepDefinitions
             certificationAddAndDeleteComponent = new CertificationAddAndDeleteComponent();
             certificationAssertHelper = new CertificationAssertHelper();
             certificationDMList = new List<CertificationDM>();
-            ReadJSONData();
         }
-        public void ReadJSONData()
+        public void ReadJSONData(string testDataPath)
         {
-            jsonReaderObj?.SetDataPath("certification");
+            jsonReaderObj?.SetDataPath(testDataPath);
             certificationDMList = jsonReaderObj!.ReadCertificationJsonData();
         }
 
@@ -35,6 +34,13 @@ namespace AdvancedTaskPart2SpecFlowProject.StepDefinitions
         {
             certificationRenderComponents.CertificationTabRenderComponent();
         }
+
+        [Given(@"User reads certification test data from '([^']*)'")]
+        public void GivenUserReadsCertificationTestDataFrom(string testDataPath)
+        {
+            ReadJSONData(testDataPath);
+        }
+
 
         [When(@"user deletes all the certification records one by one")]
         public void WhenUserDeletesAllTheCertificationRecordsOneByOne()
@@ -57,6 +63,8 @@ namespace AdvancedTaskPart2SpecFlowProject.StepDefinitions
             certificationAddAndDeleteComponent.AddCertification(certificationDMList[1]);
             actualMessage = certificationRenderComponents!.CapturePopupMessage();
             expectedMessage = certificationDMList[1].certificateName + " has been added to your certification";
+            certificationAddAndDeleteComponent.DeleteAllCertificationRecords();
+
         }
 
         [Then(@"Mars portal should alert the user and save the new certification record")]
@@ -68,9 +76,12 @@ namespace AdvancedTaskPart2SpecFlowProject.StepDefinitions
         [When(@"user does not enter data in any of the available certification fields")]
         public void WhenUserDoesNotEnterDataInAnyOfTheAvailableCertificationFields()
         {
+            certificationAddAndDeleteComponent.DeleteAllCertificationRecords();
             certificationAddAndDeleteComponent.AddCertification(certificationDMList[2]);
             actualMessage = certificationRenderComponents!.CapturePopupMessage();
             expectedMessage = "Please enter Certification Name, Certification From and Certification Year";
+            certificationAddAndDeleteComponent.DeleteAllCertificationRecords();
+
         }
 
         [Then(@"Mars portal should alert the user and should not save the new certification record")]
@@ -82,17 +93,22 @@ namespace AdvancedTaskPart2SpecFlowProject.StepDefinitions
         [When(@"user does not select any options from the year dropdown")]
         public void WhenUserDoesNotSelectAnyOptionsFromTheYearDropdown()
         {
+            certificationAddAndDeleteComponent.DeleteAllCertificationRecords();
             certificationAddAndDeleteComponent.AddCertification(certificationDMList[3]);
             actualMessage = certificationRenderComponents!.CapturePopupMessage();
             expectedMessage = "Please enter Certification Name, Certification From and Certification Year";
+            certificationAddAndDeleteComponent.DeleteAllCertificationRecords();
+
         }
 
         [When(@"user does not enter any data in both the certification Text Boxes")]
         public void WhenUserDoesNotEnterAnyDataInBothTheCertificationTextBoxes()
         {
+            certificationAddAndDeleteComponent.DeleteAllCertificationRecords();
             certificationAddAndDeleteComponent.AddCertification(certificationDMList[4]);
             actualMessage = certificationRenderComponents!.CapturePopupMessage();
             expectedMessage = "Please enter Certification Name, Certification From and Certification Year";
+            certificationAddAndDeleteComponent.DeleteAllCertificationRecords();
         }
 
         [When(@"user adds an already existing certification record")]
@@ -103,6 +119,8 @@ namespace AdvancedTaskPart2SpecFlowProject.StepDefinitions
             certificationAddAndDeleteComponent.AddCertification(certificationDMList[0]);
             actualMessage = certificationRenderComponents!.CapturePopupMessage();
             expectedMessage = "This information is already exist.";
+            certificationAddAndDeleteComponent.DeleteAllCertificationRecords();
+
         }
 
         [When(@"user adds an education record with already existing data in Text Boxes and selecting different year from dropdown")]
@@ -113,6 +131,8 @@ namespace AdvancedTaskPart2SpecFlowProject.StepDefinitions
             certificationAddAndDeleteComponent.AddCertification(certificationDMList[5]);
             actualMessage = certificationRenderComponents!.CapturePopupMessage();
             expectedMessage = "Duplicated data";
+            certificationAddAndDeleteComponent.DeleteAllCertificationRecords();
+
         }
 
         [When(@"user adds an certification record with new data in Text Boxes and selecting already existing year from dropdown")]
@@ -123,6 +143,8 @@ namespace AdvancedTaskPart2SpecFlowProject.StepDefinitions
             certificationAddAndDeleteComponent.AddCertification(certificationDMList[6]);
             actualMessage = certificationRenderComponents!.CapturePopupMessage();
             expectedMessage = certificationDMList[6].certificateName + " has been added to your certification";
+            certificationAddAndDeleteComponent.DeleteAllCertificationRecords();
+
         }
 
         [When(@"user adds a certification record with Special Characters and numbers in certification name TextBox")]
@@ -132,6 +154,8 @@ namespace AdvancedTaskPart2SpecFlowProject.StepDefinitions
             certificationAddAndDeleteComponent.AddCertification(certificationDMList[7]);
             actualMessage = certificationRenderComponents!.CapturePopupMessage();
             expectedMessage = certificationDMList[7].certificateName + " has been added to your certification";
+            certificationAddAndDeleteComponent.DeleteAllCertificationRecords();
+
         }
 
         [When(@"user adds a certification record with very long data in CertifiedFrom TextBox")]
@@ -141,6 +165,8 @@ namespace AdvancedTaskPart2SpecFlowProject.StepDefinitions
             certificationAddAndDeleteComponent.AddCertification(certificationDMList[8]);
             actualMessage = certificationRenderComponents!.CapturePopupMessage();
             expectedMessage = certificationDMList[8].certificateName + " has been added to your certification";
+            certificationAddAndDeleteComponent.DeleteAllCertificationRecords();
+
         }
 
         [When(@"user adds a certification record with only Spaces in TextBoxes")]
@@ -150,6 +176,8 @@ namespace AdvancedTaskPart2SpecFlowProject.StepDefinitions
             certificationAddAndDeleteComponent.AddCertification(certificationDMList[9]);
             actualMessage = certificationRenderComponents!.CapturePopupMessage();
             expectedMessage = "has been added to your certification";
+            certificationAddAndDeleteComponent.DeleteAllCertificationRecords();
+
         }
 
         [When(@"user cancels a certification record without adding")]
@@ -159,6 +187,7 @@ namespace AdvancedTaskPart2SpecFlowProject.StepDefinitions
             certificationAddAndDeleteComponent.AddCertification(certificationDMList[0]);
             certificationAddAndDeleteComponent.SetCancelFlag(1);
             certificationAddAndDeleteComponent.AddCertification(certificationDMList[10]);
+
         }
 
         [Then(@"Mars portal should not save the cancelled certification record")]
@@ -166,6 +195,8 @@ namespace AdvancedTaskPart2SpecFlowProject.StepDefinitions
         {
             string lastCertificationeName = certificationRenderComponents.GetLastRecordCertificateName();
             certificationAssertHelper.assertCancelAddNewCerificationRecord(lastCertificationeName);
+            certificationAddAndDeleteComponent.DeleteAllCertificationRecords();
+
         }
 
     }
